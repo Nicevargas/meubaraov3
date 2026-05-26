@@ -1,0 +1,1 @@
+import{$ as u,K as a,a2 as n,M as c}from"./index-CHfEt10I.js";function l(i){const e=u(),t=a.useRef(void 0);return n(e.stores.location,s=>{const r=s;if(e.options.defaultStructuralSharing){const o=c(t.current,r);return t.current=o,o}return r})}export{l as u};

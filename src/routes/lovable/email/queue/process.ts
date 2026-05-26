@@ -1,7 +1,29 @@
-import { sendLovableEmail } from "@lovable.dev/email-js";
 import { createFileRoute } from "@tanstack/react-router";
 import { createSupabaseConnection } from "@/integrations/supabase/connection";
 import type { Database } from "@/integrations/supabase/types";
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+async function sendLovableEmail(
+  payload: Record<string, any>,
+  options: { apiKey: string; sendUrl?: string }
+) {
+  const url = options.sendUrl || "https://connector-gateway.lovable.dev/email/send";
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${options.apiKey}`,
+    },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    const err = new Error(`Email sending failed with status ${res.status}: ${text}`);
+    (err as any).status = res.status;
+    throw err;
+  }
+  return res.json();
+}
 
 const MAX_RETRIES = 5;
 const DEFAULT_BATCH_SIZE = 10;

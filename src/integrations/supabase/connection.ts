@@ -47,7 +47,7 @@ function getCredentials(kind: SupabaseClientKind) {
 
   if (missing.length > 0) {
     throw new Error(
-      `Missing Supabase environment variable(s): ${missing.join(", ")}. Connect Supabase in Lovable Cloud.`,
+      `Missing Supabase environment variable(s): ${missing.join(", ")}. Please configure them in your environment variables.`,
     );
   }
 

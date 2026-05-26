@@ -1,0 +1,16 @@
+{
+  "date": "2026-05-26T21:26:50.581Z",
+  "preset": "vercel",
+  "framework": {
+    "name": "nitro",
+    "version": ""
+  },
+  "versions": {
+    "nitro": "3.0.0"
+  },
+  "commands": {
+    "preview": "",
+    "deploy": ""
+  },
+  "config": {}
+}
