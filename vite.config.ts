@@ -3,19 +3,18 @@ import { defineConfig } from "vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
   plugins: [
     tsconfigPaths(),
     tailwindcss(),
     tanstackStart({
-      server: {
-        preset: "vercel",
-      },
       importProtection: {
         enabled: false,
       },
     }),
+    nitro(),
     viteReact(),
   ],
   resolve: {
